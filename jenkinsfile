@@ -6,8 +6,8 @@ agent any
        stage('mvn compile')
        {
          steps{
-          withMaven(jdk: 'JDKAWS', maven: 'MavenAWS')
-		  sh 'mvn compile'
+          withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
+		  sh 'mvn compile'}
          }
        }
  }
