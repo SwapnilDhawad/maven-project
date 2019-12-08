@@ -1,13 +1,12 @@
-pipeline 
-{
-agent any 
-  stages 
-  {
-       stage('git clone')
-       {
-         steps{
-          git 'https://github.com/SwapnilDhawad/maven-project.git'
-         }
-       }
- }
+pipeline{
+stages{
+stage ('mvn  compile){
+steps {
+withMaven(jdk: 'JDKAWS', maven: 'MavenAWS') {
+    sh 'mvn compile'
 }
+}
+}
+}
+}
+
