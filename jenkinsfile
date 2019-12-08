@@ -10,6 +10,14 @@ agent any
 		  sh 'mvn compile'}
          }
        }
+	   stage('test'){
+	   steps{
+	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
+		  sh 'mvn test'}
+	   }
+	   
+	   }
+	   
  }
  
  }
