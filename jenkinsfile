@@ -1,6 +1,6 @@
 pipeline{
 stages{
-stage ('mvn  compile){
+stage ('mvn  compile'){
 steps {
 withMaven(jdk: 'JDKAWS', maven: 'MavenAWS') {
     sh 'mvn compile'
