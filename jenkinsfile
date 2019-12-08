@@ -18,6 +18,15 @@ agent any
 	   
 	   }
 	   
+	    stage('maven build'){
+	   steps{
+	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
+		  sh 'mvn package'}
+	   }
+	   
+	   }
+      
+	   
  }
  
  }
