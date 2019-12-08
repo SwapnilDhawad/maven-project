@@ -25,6 +25,14 @@ agent any
 	   }
 	   
 	   }
+	   
+	   stage('maven install'){
+	   steps{
+	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
+		  sh 'mvn install'}
+	   }
+	   
+	   }
       
 	   
  }
