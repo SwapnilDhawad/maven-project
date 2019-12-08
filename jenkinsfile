@@ -1,41 +1,23 @@
 pipeline 
 {
-agent any 
+ agent any 
   stages 
   {
-       stage('mvn compile')
-       {
-         steps{
-          withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
-		  sh 'mvn compile'}
-         }
-       }
-	   stage('test'){
-	   steps{
-	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
-		  sh 'mvn test'}
-	   }
-	   
-	   }
-	   
-	    stage('maven build'){
-	   steps{
-	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
-		  sh 'mvn package'}
-	   }
-	   
-	   }
-	   
-	   stage('maven install'){
+    stage('maven install'){
 	   steps{
 	    withMaven(jdk: 'JDKAWS', maven: 'MavenAWS'){
 		  sh 'mvn install'}
 	   }
-	   
 	   }
-      
 	   
- }
- 
+	stage('deploy to tomcat'){
+	   steps{
+	    sshagent(['ssh-pipline']) {
+         sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@35.176.89.135:/usr/share/tomcat/webapps
+        }
+		
+		}
+	   }
+	}   
  }
 
