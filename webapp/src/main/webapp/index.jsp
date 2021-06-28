@@ -1,3 +1,3 @@
 hello ,jenkins
 this is Swapnil........
-Auto Trigger JOB
+<P>Auto Trigger JOB 28/06/2021</P>
