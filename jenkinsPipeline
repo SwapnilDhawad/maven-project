@@ -5,8 +5,7 @@ pipeline{
             steps{
                 sh 'mvn clean package'
             }
-        }
-        post{
+            post{
             success{
                 echo 'Package the application'
                 archiveArtifacts artifacts:'**/*.war'
